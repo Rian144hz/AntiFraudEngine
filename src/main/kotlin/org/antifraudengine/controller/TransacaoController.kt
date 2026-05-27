@@ -38,8 +38,7 @@ class TransacaoController(
         val transacaoProcessada = motorRegras.processarTransacao(novaTransacao);
         return ResponseEntity.status(HttpStatus.CREATED).body(transacaoProcessada);
     }
-
-    @GetMapping("/transacoes")
+    @GetMapping
     fun listarTodas(
         @RequestParam(required = false) buyerId: Long?,
         @RequestParam(required = false) status: String?,
