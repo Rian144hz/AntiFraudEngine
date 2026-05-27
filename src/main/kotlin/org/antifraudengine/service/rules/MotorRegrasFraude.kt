@@ -2,7 +2,9 @@ package org.antifraudengine.service.rules
 
 import org.antifraudengine.domain.entities.Transacao
 import org.antifraudengine.repository.TransacaoRepository
+import org.springframework.stereotype.Component
 
+@Component
 class MotorRegrasFraude(private val regras: List<RegraFraude>,
     private val transacaoRepository: TransacaoRepository) {
 
@@ -18,8 +20,8 @@ class MotorRegrasFraude(private val regras: List<RegraFraude>,
                 return transacaoRepository.save(transacao);
             }
         }
-        transacao.status = "APROVADA"
-        transacao.tipoStatus = "APROVADA: Nenhuma irregularidade detectada."
+        transacao.status = "APROVADA!"
+        transacao.tipoStatus = "APROVADA!: Nenhuma irregularidade detectada."
         return transacaoRepository.save(transacao)
     }
 }
