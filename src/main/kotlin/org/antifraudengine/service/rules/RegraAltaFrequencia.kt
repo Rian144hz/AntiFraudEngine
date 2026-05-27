@@ -27,7 +27,7 @@ class RegraAltaFrequencia(
         if (totalDeComprasNaJanela > limiteCompras) {
             return ResultadoRegra(
                 aprovado = false,
-                motivo = "NEGADA! Alta frequencia de transacoes detectada: \$totalComprasNaJanela compras nos ultimos \$minutosJanela minutos.",
+                motivo = "NEGADA! Alta frequencia de transacoes detectada: $totalDeComprasNaJanela compras nos ultimos $minutosJanela minutos.",
             )
         }
         return ResultadoRegra(
