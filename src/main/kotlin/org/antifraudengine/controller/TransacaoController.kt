@@ -2,6 +2,7 @@ package org.antifraudengine.controller
 
 import org.antifraudengine.domain.entities.Transacao
 import org.antifraudengine.dto.TransacaoRequestDTO
+import org.antifraudengine.exceptions.TransacaoNaoEncontradaException
 import org.antifraudengine.repository.TransacaoRepository
 import org.antifraudengine.service.rules.MotorRegrasFraude
 import org.springframework.http.HttpStatus
@@ -59,13 +60,11 @@ class TransacaoController(
 
     @GetMapping("/{id}")
     fun buscarPorId(@PathVariable id: Long): ResponseEntity<Transacao> {
-        val transacaoOpcional = transacaoRepository.findById(id)
-
-        return if (transacaoOpcional.isPresent) {
-            ResponseEntity.ok(transacaoOpcional.get())
-        } else {
-            ResponseEntity.notFound().build()
+        val transacao = transacaoRepository.findById(id).orElseThrow{
+            TransacaoNaoEncontradaException("Transação com o ID $id não foi encontrada.")
         }
+
+        return ResponseEntity.ok(transacao)
     }
 }
 
