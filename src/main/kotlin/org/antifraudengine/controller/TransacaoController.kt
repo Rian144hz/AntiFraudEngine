@@ -33,7 +33,6 @@ class TransacaoController(
             dataHora = request.timestamp?: LocalDateTime.now(),
             status = "PENDENTE",
             tipoStatus = "Aguardando processamento do motor de regras."
-
         )
 
         val transacaoProcessada = motorRegras.processarTransacao(novaTransacao);

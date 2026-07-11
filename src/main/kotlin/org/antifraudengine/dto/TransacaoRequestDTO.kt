@@ -8,7 +8,7 @@ data class TransacaoRequestDTO(
     val amount: BigDecimal?,
     val cardNumber: String?,
     val category: String?,
-    val timestamp: LocalDateTime?
+    val timestamp: LocalDateTime?,
 ) {
     init {
         require(buyerId != null) { "O compradorId é obrigatório" }
