@@ -48,8 +48,7 @@ class TransacaoController(
         var resultadoFiltrado = transacoes;
         if (buyerId != null) {
             resultadoFiltrado = resultadoFiltrado.filter { it.compradorId == buyerId }
-        }
-
+        
         if (status != null) {
             resultadoFiltrado = resultadoFiltrado.filter { it.status.equals(status,ignoreCase = true) }
         }
